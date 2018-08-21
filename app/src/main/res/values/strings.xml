@@ -4,4 +4,8 @@
     <string name="pais">Brasil</string>
     <string name="conteudo_banner_inicial">Banner inicial dos pacotes</string>
     <string name="local">local</string>
+    <string name="preco_final">Preço final:</string>
+    <string name="realizar_pagamento">Realizar Pagamento</string>
+    <string name="imagem_de_descrico">Imagem de Descrição</string>
+    <string name="imagem_string_local">Imagem @string/local</string>
 </resources>
