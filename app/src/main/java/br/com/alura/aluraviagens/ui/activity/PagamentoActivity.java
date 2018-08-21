@@ -1,5 +1,6 @@
 package br.com.alura.aluraviagens.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -25,7 +26,8 @@ public class PagamentoActivity extends AppCompatActivity {
 
         mostraPreco(pacote);
 
-
+        Intent intent = new Intent(this, ResumoCompraActivity.class);
+        startActivity(intent);
     }
 
     private void mostraPreco(Pacote pacote) {
