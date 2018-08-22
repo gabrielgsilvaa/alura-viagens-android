@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import br.com.alura.aluraviagens.util.resourceUtil;
 public class ResumoPacoteActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Resumo do Pacote";
+    public static final String PACOTE = "pacote";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +34,31 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resumo_pacote);
         setTitle(TITULO_APPBAR);
 
-        Pacote pacote = new Pacote("São Paulo", "sao_paulo_sp", 2, new BigDecimal(243.99));
+        Intent intent = getIntent();
 
-        mostraLocal(pacote);
-        mostraImagem(pacote);
-        mostraDias(pacote);
-        mostraPreco(pacote);
-        mostraData(pacote);
+        if(intent.hasExtra(PACOTE)) {
 
-        Intent intent = new Intent(this, PagamentoActivity.class);
-        startActivity(intent);
+            final Pacote pacote = (Pacote) intent.getSerializableExtra(PACOTE);
 
+            mostraLocal(pacote);
+            mostraImagem(pacote);
+            mostraDias(pacote);
+            mostraPreco(pacote);
+            mostraData(pacote);
+
+            Button botaoRealizaPAgamento = findViewById(R.id.resumo_pacote_botao_realiza_pagamento);
+            botaoRealizaPAgamento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(ResumoPacoteActivity.this, PagamentoActivity.class);
+                    intent.putExtra(PACOTE, pacote);
+                    startActivity(intent);
+
+                }
+            });
+
+        }
 
     }
 

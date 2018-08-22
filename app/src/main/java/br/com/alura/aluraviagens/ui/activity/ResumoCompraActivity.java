@@ -1,5 +1,6 @@
 package br.com.alura.aluraviagens.ui.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import br.com.alura.aluraviagens.R;
@@ -19,6 +21,7 @@ import br.com.alura.aluraviagens.util.resourceUtil;
 public class ResumoCompraActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Resumo da Compra";
+    public static final String PACOTE = "pacote";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +30,17 @@ public class ResumoCompraActivity extends AppCompatActivity {
 
         setTitle(TITULO_APPBAR);
 
-        Pacote pacote = new Pacote("São Paulo", "sao_paulo_sp", 2, new BigDecimal(243.99));
+        Intent intent = getIntent();
 
-        mostraLocal(pacote);
-        mostraImagem(pacote);
-        mostraData(pacote);
-        mostraPreco(pacote);
+        if(intent.hasExtra(PACOTE)){
 
+            Pacote pacote = (Pacote) intent.getSerializableExtra(PACOTE);
+
+            mostraLocal(pacote);
+            mostraImagem(pacote);
+            mostraData(pacote);
+            mostraPreco(pacote);
+        }
     }
 
     private void mostraPreco(Pacote pacote) {
