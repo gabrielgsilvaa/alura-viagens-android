@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="@string/minhas_viagens"
+        android:contentDescription="@string/alura_viagens"
         android:src="@drawable/ic_wallet_travel"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
