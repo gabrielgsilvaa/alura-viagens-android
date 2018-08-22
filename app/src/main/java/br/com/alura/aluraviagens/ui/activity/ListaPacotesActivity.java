@@ -14,10 +14,11 @@ import br.com.alura.aluraviagens.dao.PacoteDAO;
 import br.com.alura.aluraviagens.model.Pacote;
 import br.com.alura.aluraviagens.ui.adapter.ListaPacotesAdapter;
 
+import static br.com.alura.aluraviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 public class ListaPacotesActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Pacotes";
-    public static final String PACOTE = "pacote";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +40,16 @@ public class ListaPacotesActivity extends AppCompatActivity {
 
                 Pacote pacoteSelecionado = pacotes.get(position);
 
-                Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
-                intent.putExtra(PACOTE, pacoteSelecionado);
-                startActivity(intent);
+                vaiParaResumoPacote(pacoteSelecionado);
 
             }
         });
+    }
+
+    private void vaiParaResumoPacote(Pacote pacoteSelecionado) {
+        Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
+        intent.putExtra(CHAVE_PACOTE, pacoteSelecionado);
+        startActivity(intent);
     }
 
 }

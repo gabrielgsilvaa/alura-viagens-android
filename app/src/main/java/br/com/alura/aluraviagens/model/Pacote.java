@@ -3,7 +3,7 @@ package br.com.alura.aluraviagens.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Pacote implements Serializable{
+public class Pacote implements Serializable {
 
     private final String local;
     private final String imagem;

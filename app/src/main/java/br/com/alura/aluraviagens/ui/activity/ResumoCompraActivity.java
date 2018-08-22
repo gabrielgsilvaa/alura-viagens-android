@@ -18,10 +18,11 @@ import br.com.alura.aluraviagens.util.dataUtil;
 import br.com.alura.aluraviagens.util.moedaUtil;
 import br.com.alura.aluraviagens.util.resourceUtil;
 
+import static br.com.alura.aluraviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 public class ResumoCompraActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Resumo da Compra";
-    public static final String PACOTE = "pacote";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +31,25 @@ public class ResumoCompraActivity extends AppCompatActivity {
 
         setTitle(TITULO_APPBAR);
 
+        carregaPacoteRecebido();
+    }
+
+    private void carregaPacoteRecebido() {
         Intent intent = getIntent();
 
-        if(intent.hasExtra(PACOTE)){
+        if (intent.hasExtra(CHAVE_PACOTE)) {
 
-            Pacote pacote = (Pacote) intent.getSerializableExtra(PACOTE);
+            Pacote pacote = (Pacote) intent.getSerializableExtra(CHAVE_PACOTE);
 
-            mostraLocal(pacote);
-            mostraImagem(pacote);
-            mostraData(pacote);
-            mostraPreco(pacote);
+            inicializaCampos(pacote);
         }
+    }
+
+    private void inicializaCampos(Pacote pacote) {
+        mostraLocal(pacote);
+        mostraImagem(pacote);
+        mostraData(pacote);
+        mostraPreco(pacote);
     }
 
     private void mostraPreco(Pacote pacote) {
